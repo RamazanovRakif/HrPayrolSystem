@@ -1,0 +1,34 @@
+﻿@model AbsenceVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container d-flex">
+    <div class="col-md-3"></div>
+    <div class="col-md-4">
+        <form method="post" asp-action="Create" asp-controller="Penalty">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <input type="hidden" class="form-control" asp-for="WorkerId" />
+            <div class="form-group">
+                <label class="control-label">Ad/soyad</label>
+                <input class="form-control" asp-for="WorkerAccount" disabled />
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Absence">Qayıb forması</label>
+                <select class="form-control" asp-for="SelectedAbsence" asp-items="@(new SelectList(Model.Absence,"ID","Name"))">
+                   
+                </select>
+                <span asp-validation-for="SelectedAbsence" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Reason">Səbəb</label>
+                <textarea class="form-control" type="text" asp-for="Reason" style="hyphens:unset;"></textarea>
+                <span class="text-danger" asp-validation-for="Reason"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>

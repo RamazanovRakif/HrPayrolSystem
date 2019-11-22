@@ -1,0 +1,33 @@
+﻿@model VacationVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<div class="container d-flex">
+    <div class="col-md-3"></div>
+    <div class="col-md-4">
+        <form method="post" asp-action="Create" asp-controller="Vacation">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <input type="hidden" class="form-control" asp-for="WorkerId" />
+            <div class="form-group">
+                <input class="form-control" asp-for="WorkerAccount" disabled />
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="StartDate">Başlama vaxtı</label>
+                <input class="form-control" asp-for="StartDate" type="date" />
+                <span class="text-danger" asp-validation-for="StartDate"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="EndDate">Bitmə vaxtı</label>
+                <input class="form-control" asp-for="EndDate" type="date" />
+                <span class="text-danger" asp-validation-for="EndDate"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+

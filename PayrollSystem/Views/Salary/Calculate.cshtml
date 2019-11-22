@@ -1,0 +1,62 @@
+﻿@model PayrollSystem.ViewModels.SalaryViewModel
+@{
+    ViewData["Title"] = "Calculate";
+}
+<div class="col-md-12">
+    <div style="margin-top:10px; overflow-x:auto; overflow-y:auto;">
+        <form asp-action="Calculate" asp-controller="Salary">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="padding:0;"></th>
+                        <th style="padding:0;"></th>
+                        <th style="padding:0;"></th>
+                        <th style="padding:0;"></th>
+                        <th style="padding:0;"></th>
+                        <th style="padding:0;"></th>
+                        <th style="padding:0;"></th>
+                        <th>Seç</th>
+                        <th>Ad</th>
+                        <th>Soyad</th>
+                        <th>Vəzifə</th>
+                        <th>Departament</th>
+                        <th>Bonus</th>
+                        <th>Aylıq məvacib</th>
+                        <th>Üzürlü qayıblar</th>
+                        <th>Üzürsüz qayıblar</th>
+                        <th>Ümumi maaş</th>
+                    </tr>
+                </thead>
+                <tbody id="calcSalAppend">
+                    @for (int i = 0; i < Model.SelectedWorkers.Count; i++)
+                    {
+                    <tr>
+                        <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].EmployeeId)</td>
+                        <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].IDCardNumber)</td>
+                        <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].TotalSalary)</td>
+                        <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].OldCalculate)</td>
+                        <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].Name)</td>
+                        <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].Surname)</td>
+                        <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].Position)</td>
+                        <td>
+                            @Html.CheckBoxFor(it => Model.SelectedWorkers[i].IsChecked)
+                        </td>
+                        <td>@Model.SelectedWorkers[i].Name</td>
+                        <td>@Model.SelectedWorkers[i].Surname</td>
+                        <td>@Model.SelectedWorkers[i].Position</td>
+                        <td>@Model.SelectedWorkers[i].Department</td>
+                        <td>@Model.SelectedWorkers[i].Bonus</td>
+                        <td>@Model.SelectedWorkers[i].MonthlySalary</td>
+                        <td>@Model.SelectedWorkers[i].ExcusableAbsens</td>
+                        <td>@Model.SelectedWorkers[i].UnExcusableAbsens</td>
+                        <td>@Model.SelectedWorkers[i].TotalSalary</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="form-group">
+                <input type="submit" value="Calculate" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@model PayrollSystem.ViewModels.SalaryViewModel
+@for (int i = 0; i < Model.SelectedWorkers.Count; i++)
+{
+<tr>
+    <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].EmployeeId)</td>
+    <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].IDCardNumber)</td>
+    <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].TotalSalary)</td>
+    <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].OldCalculate)</td>
+    <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].Name)</td>
+    <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].Surname)</td>
+    <td style="padding:0;">@Html.HiddenFor(x => Model.SelectedWorkers[i].Position)</td>
+    <td>
+        @Html.CheckBoxFor(it => Model.SelectedWorkers[i].IsChecked)
+    </td>
+    <td>@Model.SelectedWorkers[i].Name</td>
+    <td>@Model.SelectedWorkers[i].Surname</td>
+    <td>@Model.SelectedWorkers[i].Position</td>
+    <td>@Model.SelectedWorkers[i].Department</td>
+    <td>@Model.SelectedWorkers[i].Bonus</td>
+    <td>@Model.SelectedWorkers[i].MonthlySalary</td>
+    <td>@Model.SelectedWorkers[i].OldCalculate.Date.ToShortDateString()</td>
+    <td>@Model.SelectedWorkers[i].ExcusableAbsens</td>
+    <td>@Model.SelectedWorkers[i].UnExcusableAbsens</td>
+    <td>@Model.SelectedWorkers[i].TotalSalary</td>
+</tr>
+}

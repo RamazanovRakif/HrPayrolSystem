@@ -1,0 +1,57 @@
+﻿@model PayrollSystem.ViewModels.SalaryViewModel
+@{
+    ViewData["Title"] = "SalaryForWorker";
+}
+<div class="col-md-12">
+    <div style="margin-top:10px; overflow-x:auto; overflow-y:auto;">
+        <form asp-action="Calculate" asp-controller="Salary" method="get">
+            <div class="d-flex">
+                <div class="form-group col-md-3">
+                    <input type="text" value="Tarixi seç"
+                           class="datepicker-here form-control"
+                           data-language='en'
+                           data-min-view="months"
+                           data-view="months"
+                           data-date-format="MM yyyy" name="selectedDate" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Tarixə bax" class="btn btn-primary calc" />
+                </div>
+            </div>
+        </form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Vəzifə</th>
+                    <th>Departament</th>
+                    <th>Bonus</th>
+                    <th>Aylıq məvacib</th>
+                    <th>Üzürlü qayıblar</th>
+                    <th>Üzürsüz qayıblar</th>
+                    <th>Ümumi maaş</th>
+                </tr>
+            </thead>
+            <tbody id="forappend">
+                @for (int i = 0; i < Model.SelectedWorkers.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.SelectedWorkers[i].Name</td>
+                        <td>@Model.SelectedWorkers[i].Surname</td>
+                        <td>@Model.SelectedWorkers[i].Position</td>
+                        <td>@Model.SelectedWorkers[i].Department</td>
+                        <td>@Model.SelectedWorkers[i].Bonus</td>
+                        <td>@decimal.Round(@Model.SelectedWorkers[i].MonthlySalary,2)</td>
+                        <td>@Model.SelectedWorkers[i].ExcusableAbsens</td>
+                        <td>@Model.SelectedWorkers[i].UnExcusableAbsens</td>
+                        <td>@decimal.Round(@Model.SelectedWorkers[i].TotalSalary,2)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <input type="hidden" class="skipcount" id="totalCount" value="@ViewBag.SkipCount" />
+</div>
+
+

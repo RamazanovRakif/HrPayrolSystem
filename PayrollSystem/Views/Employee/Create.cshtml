@@ -1,0 +1,162 @@
+﻿@model EmployeeVM
+@{
+    ViewData["Title"] = "Create";
+}
+<link href="~/css/index.css" rel="stylesheet" />
+<div class="container-fluid" >
+    <form method="post" asp-controller="Employee" asp-action="Create" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-12  d-flex"  >
+                <div class="col-md-4">
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <div class="mt-2">
+                        <div class="col-md-12">
+                            <label class="control-label">Ad</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" asp-for="Name" />
+                            <span class="text-danger" asp-validation-for="Name"></span>
+                        </div>
+                    </div>
+                    <div class="mt-2" >
+                        <div class="col-md-12">
+                            <label class="control-label" asp-for="Surname">Soyad</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" asp-for="Surname" />
+                            <span class="text-danger" asp-validation-for="Surname"></span>
+                        </div>
+                    </div>
+                    <div class="mt-2" >
+                        <div class="col-md-12">
+                            <label class="control-label" asp-for="FatherName">Ata adı</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" asp-for="FatherName" />
+                            <span class="text-danger" asp-validation-for="FatherName"></span>
+                        </div>
+                    </div>
+                    <div class="mt-2" >
+                        <div class="col-md-12">
+                            <label class="control-label" asp-for="Birtday">Doğum Tarixi</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="date" asp-for="Birtday" />
+                            <span class="text-danger" asp-validation-for="Birtday"></span>
+                        </div>
+                    </div>
+                    <div class="mt-2" >
+                        <div class="col-md-12">
+                            <label asp-for="Genders" class="control-label">Cinsi</label>
+                        </div>
+                        <div class="col-md-10">
+                            <select class="form-control" asp-for="SelectedGender" asp-items="@(new SelectList(Model.Genders,"GenderId","GenderName"))">
+                                <option value="">--Cins--</option>
+                            </select>
+                            <span asp-validation-for="Genders" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="col-md-12">
+                            <label asp-for="Educations" class="control-label">Təhsili</label>
+                        </div>
+                        <div class="col-md-10">
+                            <select class="form-control" asp-for="SelectedEducation" asp-items="@(new SelectList(Model.Educations,"EducationId","EducationName"))">
+                                <option value="">--Təhsil--</option>
+                            </select>
+                            <span asp-validation-for="Educations" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="mt-2" >
+                        <div class="col-md-12">
+                            <label class="control-label" asp-for="Residence">Yaşayış yeri</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" asp-for="Residence" />
+                            <span class="text-danger" asp-validation-for="Residence"></span>
+                        </div>
+                    </div>
+                    <div class="mt-2" >
+                        <div class="col-md-12">
+                            <label asp-for="Maritals" class="control-label">Ailə vəziyyəti</label>
+                        </div>
+                        <div class="col-md-10">
+                            <select class="form-control" asp-for="SelectedMarital" asp-items="@(new SelectList(Model.Maritals,"MaritalStatusId","MaritalStatusName"))">
+                                <option value="">--Ailə vəziyyəti</option>
+                            </select>
+                            <span asp-validation-for="SelectedMarital" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="mt-2" >
+                        <div class="col-md-12">
+                            <label class="control-label">Qeydiyyat Unvanı</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" asp-for="DistrictRegistration" />
+                            <span class="text-danger" asp-validation-for="DistrictRegistration"></span>
+                        </div>
+                    </div>
+                    <div class="mt-2" >
+                        <div class="col-md-6">
+                            <label class="control-label">Şəxsiyyət Vəsiqəsi</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" asp-for="PersonalityCardNumber" />
+                            <span class="text-danger" asp-validation-for="PersonalityCardNumber"></span>
+                        </div>
+                    </div>
+                    <div class="mt-2" >
+                        <div class="col-md-12">
+                            <label class="control-label">Vəsiqənin bitmə tarixi</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="date" asp-for="PersonalityCardEndDate" />
+                            <span class="text-danger" asp-validation-for="PersonalityCardEndDate"></span>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <div class="col-md-12">
+                            <label class="control-label">Evvelki İş yeri</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" asp-for="OldWorkPlaces" />
+                            <span class="text-danger" asp-validation-for="OldWorkPlaces"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" style="padding-right:30px;">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div id="imgPreview">
+                                <img src="" style=" border:1px solid black; height:200px; width:200px; background-image: url(/images/no_photo.jpg); background-size:contain;" id="image">
+                            </div>
+                            <input style="margin-top:5px" ; accept="image/*" asp-for="Photo" type="file" onchange="showImage.call(this)" />
+                            <span class="text-danger" asp-validation-for="Photo"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input style="margin:50px 0 0 80px;" type="submit" value="Yarat" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+@section scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>function showImage() {
+            if (this.files && this.files[0]) {
+                var obj = new FileReader();
+                obj.onload = function (data) {
+                    var image = document.getElementById("image");
+                    image.src = data.target.result;
+                }
+                obj.readAsDataURL(this.files[0]);
+            }
+        }</script>
+}

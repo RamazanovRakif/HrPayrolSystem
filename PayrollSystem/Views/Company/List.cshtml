@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Company>
+@{
+    ViewData["Title"] = "List";
+}
+
+
+<div class="container " style=" background-color:aliceblue !important">
+    <table class="table table-striped">
+        <thead style="font-weight:bold;">
+            <tr>
+                <td>Adı</td>
+                <td>Açılma vaxtı</td>
+                <td>Email</td>
+                <td>Ünvan</td>
+                <td>Əməliyyat</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.OpenCompany.ToShortDateString()</td>
+                    <td>@item.Email</td>
+                    <td>@item.Addres</td>
+
+                    <td>
+                        <div class="d-flex">
+                            <form asp-action="Edit" asp-controller="Company" method="get" asp-route-id="@item.ID" class="btn-padding">
+                                <input type="hidden" name="ID" value="@item.ID" />
+                                <button type="submit" style="border:none; color:black; background-color:transparent"> <i class="fas fa-edit"></i></button>
+                               
+                            </form>
+                            <form asp-action="Delete" asp-controller="Company" method="post" asp-route-id="@item.ID" class="btn-padding">
+                             
+                                <button type="submit" style="border:none; color:red; background-color:transparent"><i class="fas fa-minus-circle"></i></button>
+
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

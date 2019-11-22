@@ -1,0 +1,80 @@
+﻿@model WorkerVM
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container">
+    <form method="post" asp-controller="Worker" asp-action="Create">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="container col-md-4">
+            <div class="col-md-1"></div>
+
+                <div class="form-group">
+                    <label asp-for="Employees" class="control-label">Namizədlər</label>
+                    <select asp-for="SelectedEmployee" class="form-control" asp-items="@(new SelectList(Model.Employees,"ID","Name"))">
+                        <option value="">--Namizədi seç--</option>
+                    </select>
+                    <span asp-validation-for="SelectedEmployee" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Shops" class="control-label">Mağazalar</label>
+                    <select asp-for="SelectedShop" class="form-control" asp-items="@(new SelectList(Model.Shops,"ID","Name"))">
+                        <option value="">--Mağazanı seç--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="Email"></label>
+                    <input class="form-control" asp-for="Email" />
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Departments" class="control-label">Departamentlər</label>
+                    <select asp-for="SelectedDepartment" class="departments form-control" asp-items="@(new SelectList(Model.Departments,"ID","Name"))">
+                        <option value="">--Departamenti seç--</option>
+                    </select>
+                    <span asp-validation-for="SelectedDepartment" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Position">Vəzfələr</label>
+                    <select asp-for="SelectedPosition" class="form-control">
+                        <option value="">Vəzifəni seç</option>
+                    </select>
+                    <span asp-validation-for="SelectedPosition" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" asp-for="StartDate">Başlama tarixi</label>
+                    <input class="form-control" type="date" asp-for="StartDate" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+            </div>
+        <div class="d-flex">
+            <div class="col-md-5"></div>
+            <div class="form-group">
+                <input type="submit" value="Yarat" class="btn btn-warning" />
+            </div>
+        </div>
+    </form>
+</div>
+@section scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>$(function () {
+            $("#normalDropDown").chosen();
+        });
+        $(document).on("change", ".departments", function () {
+            var data = $(".departments").val();
+            if (data) {
+                $.ajax({
+                    url: "/Ajax/LoadPositions",
+                    data: { departmentId: data },
+                    type: "POST",
+                    success: function (res) {
+                        $("#SelectedPosition").html(res);
+                    }
+                });
+            }
+            else {
+                $("#SelectedPosition").html("<option value=''>--Select Position--</option>");
+            }
+        });</script>
+}

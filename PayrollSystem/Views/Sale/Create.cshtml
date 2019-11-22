@@ -1,0 +1,33 @@
+﻿@model AvialableShop
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Satış</h2>
+
+<div class="container-fluid" style="margin-top:15px;">
+    <form method="post" asp-controller="Sale" asp-action="Create" enctype="multipart/form-data">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <select class="form-control" asp-for="ShopId" asp-items="@(new SelectList(Model.Shops,"ID","Name"))">
+                    <option value="">--Mağaza--</option>
+                </select>
+                <span asp-validation-for="ShopId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Satış məbləği</label>
+                <input class="form-control" asp-for="SaleSalary" />
+                <span asp-validation-for="SaleSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Tarix</label>
+                <input class="form-control" asp-for="Date" type="date" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Əlavə et" />
+            </div>
+        </div>
+    </form>
+</div>

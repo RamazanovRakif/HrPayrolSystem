@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<WorkerVM>
+
+@inject UserManager<Worker> _userManager
+@{
+    ViewData["Title"] = "Remove Worker";
+}
+
+<h2>Çıxarılan işçilər</h2>
+
+
+<div class="container">
+    <div style="margin-top:10px; overflow-x:auto; overflow-y:auto;">
+        <div class="d-flex">
+            <select class="form-control col-md-3" id="selectFor">
+                <option>Axtarış forması</option>
+                <option value=":nth-child(1)">Ad</option>
+                <option value=":nth-child(2)">Soyad</option>
+                <option value=":nth-child(3)">Vəzifə</option>
+                <option value=":nth-child(4)">Departament</option>
+            </select>
+            <div class="form-group col-md-3">
+                <input type="text" class="form-control" id="txtSearch" placeholder="Employee name" />
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Vəzifə</th>
+                    <th>Departament</th>
+                    <th>İşə başlama tarixi</th>
+                    <th>Əməliyyat</th>
+                </tr>
+            </thead>
+            <tbody id="workerAppend">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Surname</td>
+                        <td>@item.Position</td>
+                        <td>@item.Department</td>
+                        <td>@item.StartDate.ToShortDateString()</td>
+                        <td class="d-flex">
+                            <form asp-action="UndoWorker" asp-controller="Worker" method="post" asp-route-id="@item.WorkerId">
+                                <input type="hidden" name="ID" value="@item.WorkerId" />
+                                <input type="submit" value="Geri götür" class="btn btn-default text-primary" />
+                            </form>
+                            <form asp-action="Delete" asp-controller="Worker" method="post" asp-route-id="@item.WorkerId">
+                                <input type="hidden" name="ID" value="@item.WorkerId" />
+                                <input type="submit" value="Sil" class="btn btn-default text-danger" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <input type="hidden" class="workerSkipcount" id="workerTotalCount" value="@ViewBag.SkipCount" />
+</div>

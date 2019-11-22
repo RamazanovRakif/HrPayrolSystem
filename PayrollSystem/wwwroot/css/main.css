@@ -1,0 +1,690 @@
+body {
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.875rem;
+    color: #666;
+    background-color: #eef1f5;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.my-page-item {
+    color: white;
+    padding: 5px 20px;
+    border-right: 1px solid white;
+}
+
+ul:last-child li:nth-child(5) {
+    border-right: 0px;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a {
+    text-decoration: none;
+    color: #666;
+}
+
+img {
+    width: 100%;
+}
+
+.bg-color {
+    background: #778899 !important;
+    border: 1px solid #778899 !important;
+    color: white !important;
+}
+
+.my-text {
+    color: #778899;
+}
+
+.page-title {
+    color: #778899;
+    font-weight: bold;
+}
+
+header {
+    background-color: #778899;
+    height: 50px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.logout-pt {
+    margin-top: 3px;
+}
+
+.user-img {
+    position: relative;
+}
+
+    .user-img .status {
+        bottom: -8px;
+    }
+
+.status.online {
+    background-color: #55ce63;
+}
+
+.user-img .status {
+    border: 2px solid #fff;
+    height: 10px;
+    position: absolute;
+    right: 6px;
+    width: 10px;
+    border-radius: 100%;
+}
+
+header ul {
+    padding-top: 13px;
+    padding-left: 78%;
+    display: flex;
+    list-style: none;
+}
+.header-left span {
+    color: white;
+    font-weight: bold;
+    padding-left: 20px;
+}
+.header-left img {
+    width: 50px;
+    height: 50px;
+}
+.user-img img {
+    width: 30px;
+    height: 30px;
+}
+#sidebar {
+    background: #778899;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+    #sidebar ul li {
+        margin-bottom: 10%;
+    }
+
+    #sidebar .sidebar-header h3 {
+        color: black;
+    }
+
+    #sidebar ul.components {
+        border-bottom: 1px solid #47748b;
+        padding-top: 15%;
+    }
+
+        #sidebar ul.components ul {
+            background: white;
+            padding: 15px 30px 1px;
+            margin-top: 20px;
+        }
+
+    #sidebar ul p {
+        color: #fff;
+        padding: 10px;
+    }
+
+    #sidebar ul li a {
+        padding: 10px;
+        padding-left: 9%;
+        font-size: 1.1em;
+        color:white;
+    }
+
+        #sidebar ul li a span {
+            padding-left: 5%;
+        }
+
+    #sidebar ul li:hover a {
+        color: black;
+    }
+
+    #sidebar ul li:hover i {
+        color: black;
+    }
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    color: black;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+    border-top: 3px solid white;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+}
+
+    #sidebar.active {
+        margin-left: -250px;
+    }
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+#sidebar .dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: -102px;
+    transform: translateY(-50%);
+}
+    #sidebar .dropdown-toggle.departmant::after{
+        right:-46px;
+    }
+#sidebar .dropdown-toggle.shop::after {
+    right: -85px;
+}
+#sidebar .dropdown-toggle.employee::after {
+    right: -112px;
+}
+#sidebar .dropdown-toggle.attendence::after {
+    right: -87px;
+}
+#sidebar .dropdown-toggle.payroll::after {
+    right: -45px;
+}
+#sidebar .dropdown-toggle.position::after {
+    right: -98px;
+}
+  
+/* -------------------------------------------------------Şirkətlər------------------------------------------------------------- */
+.page-wrapper {
+        width: 100%;
+        padding-top: 3%;
+}
+.profile-widget {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+.doctor-img {
+    cursor: pointer;
+    margin: 0 auto 15px;
+}
+
+    .doctor-img .avatar {
+        font-size: 24px;
+        height: 80px;
+        margin: 0;
+        width: 100%;
+    }
+
+.avatar > img {
+    width: 100%;
+    display: block;
+    height: 100%;
+    object-fit: contain;
+}
+
+.avatar {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.action-icon {
+    color: #777;
+    font-size: 18px;
+    padding: 0 10px;
+    display: inline-block;
+    position: absolute;
+    top: -113px;
+    right: -23px;
+}
+    .profile-widget h3 {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+.profile-widget h4 {
+    display: inline;
+    font-size: 15px;
+}
+.modal-footer.delete {
+    display: flex;
+    justify-content: space-between;
+}
+/* =============================================================ADD COMPANY=========================================================== */
+.portlet.light {
+    padding: 12px 20px 15px;
+    background-color: #fff;
+}
+
+.portlet {
+    margin-bottom: 15px !important;
+}
+
+.portlet {
+    box-shadow: 0 2px 3px 2px rgba(0,0,0,.03);
+}
+.portlet.light > .portlet-title {
+        padding: 0;
+        min-height: 48px;
+}
+.portlet > .portlet-title {
+        border-bottom: 1px solid #eee;
+        margin-bottom: 10px;
+}
+
+.profile-upload {
+    display: flex;
+}
+
+.upload-img {
+    margin-right: 10px;
+}
+
+    .upload-img img {
+        border-radius: 4px;
+        width: 80%;
+    }
+
+.upload-input {
+    width: 100%;
+}
+.portlet.light > .portlet-title > .caption {
+    padding: 10px 0;
+}
+
+.portlet > .portlet-title > .caption {
+    float: left;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.portlet.light > .portlet-title > .caption > i {
+    font-size: 15px;
+    margin-top: 3px;
+}
+
+.bold {
+    font-weight: 700 !important;
+}
+
+.portlet.light .portlet-body {
+    padding-top: 8px;
+}
+
+.md-radio-list {
+    margin: 5px 0;
+}
+
+    .md-radio-list .md-radio {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+.md-radio {
+    position: relative;
+}
+
+    .md-radio input[type=radio] {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .md-radio label {
+        cursor: pointer;
+        padding-left: 30px;
+    }
+
+        .md-radio label > span {
+            display: block;
+            position: absolute;
+            left: 0;
+        }
+
+    .md-radio input[type=radio]:checked ~ label > .check {
+        opacity: 1;
+    }
+
+    .md-radio label > .radio-check-active {
+        top: 5px;
+        left: 5px;
+        width: 10px;
+        height: 10px;
+        background: #778899;
+        z-index: 6;
+        border-radius: 50%;
+    }
+
+    .md-radio label > .box {
+        top: 0;
+        border: 2px solid #666;
+        height: 20px;
+        width: 20px;
+        border-radius: 50% !important;
+        z-index: 5;
+    }
+
+.resp-tab-active{
+    color: #778899;
+}
+
+.form-control {
+    height: 28px !important;
+    padding: 4px 12px !important;
+}
+input::placeholder {
+        font-size: 12px;
+}
+
+.btn.btn-outline.blue {
+    border-color: #778899;
+    color: #778899;
+    background: 0 0;
+    padding: 3px 0;
+    border: 2px solid #778899;
+}
+    .btn.btn-outline.blue:hover {
+        border-color: #778899;
+        color: white;
+        border: 2px solid #778899;
+        background: #778899;
+    }
+.btn.mybtn {
+        padding: .1rem .9rem;
+}
+.btn-circle {
+    border-radius: 25px !important;
+}
+
+.portlet.light > .portlet-title > .actions {
+    padding: 6px 0 14px;
+}
+
+.portlet > .portlet-title > .actions {
+    float: right;
+    display: inline-block;
+}
+
+.portlet > .portlet-title > .actions > .btn-group > .btn.btn-sm {
+    padding: 4px 10px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.btn-group.btn-group-circle > .btn:first-child {
+    border-radius: 25px 0 0 25px !important;
+}
+
+.btn.btn-outline.red {
+    border-color: #e7505a;
+    color: #e7505a;
+    background: 0 0;
+    border: 2px solid #e7505a;
+}
+    .btn.btn-outline.red:hover {
+        color: white;
+        background: #e7505a;
+    }
+.portlet > .portlet-title > .actions > .btn-group > .btn {
+    padding: 4px 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-right: 5px;
+    font-weight:bold;
+}
+
+.btn-group.btn-group-circle > .btn:last-child {
+    border-radius: 0 25px 25px 0 !important;
+}
+.btn-group.btn-group-circle > .companyDetails.btn:first-child {
+    border-radius: 25px 0 0 25px !important;
+}
+.btn:not(.md-skip) {
+    box-shadow: 0 1px 3px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.18);
+}
+
+.btn.btn-outline.green {
+    border-color: #778899;
+    color: #778899;
+    background: 0 0;
+    border: 2px solid #778899;
+}
+    .btn.btn-outline.green:hover {
+        color: white;
+        background: #778899;
+    }
+.btn.blue:not(.btn-outline){
+    color: #fff;
+    background-color: #778899;
+    border-color: #1f78b5;
+}
+
+.btn:not(.md-skip):hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,.2), 0 3px 6px rgba(0,0,0,.26);
+}
+
+.input-group-btn:last-child > .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn:not(.md-skip) > i {
+    margin-top: 0;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.resp-tab-active {
+  
+}
+.tab-content {
+    display: none;
+}
+.tab-content.current {
+        display: block;
+}
+/*-------------------------------------------------Company Details---------------------------------------------------------------*/
+.profile-view .profile-img-wrap {
+    height: auto;
+    width: 150px;
+}
+.profile-img-wrap {
+    position: absolute;
+    background: #fff;
+    overflow: hidden;
+}
+.profile-img {
+    cursor: pointer;
+    height: 80px;
+    margin: 0 auto;
+    position: relative;
+    width: 80px;
+}
+.profile-view .profile-img .avatar {
+    font-size: 24px;
+    height: 150px;
+    line-height: 150px;
+    margin: 0;
+    width: 150px;
+}
+.profile-view .profile-basic {
+    margin-left: 170px;
+}
+.profile-info-left {
+    border-right: 2px dashed #ccc;
+}
+.companyDetails a {
+    color: blue;
+    text-decoration:underline;
+}
+/* =========================================================DEPARTMENT====================================================================== */
+.status-red, a.status-red {
+    background-color: #ffe5e6;
+    border: 1px solid #fe0000;
+    color: #fe0000;
+}
+
+.status-green, a.status-green {
+    background-color: #e5faf3;
+    border: 1px solid #00ce7c;
+    color: #00ce7c;
+}
+
+.custom-badge {
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 12px;
+    min-width: 95px;
+    padding: 1px 10px;
+    text-align: center;
+}
+
+td .action-icon {
+    top: -1px;
+    right: 159px;
+}
+
+/* ============================================================================EMPLOYEES=================================================== */
+.employees td img {
+    width: 28px;
+    height: 28px;
+}
+.employees td h2 {
+    display: inline;
+    font-size: 15px;
+}
+.attendance {
+    font-size: 12px;
+}
+.my-select{
+    font-size:12px;
+    padding:4px 0 2px 12px;
+    height:28px;
+}
+.form-check-inline input{
+    margin-right:5px;
+}
+.form-check-inline label {
+    padding-top:6px;
+    margin-right:20px;
+}
+.my-error {
+    font-size: 13px;
+    margin-top: 8px;
+    display: block;
+}
+.formerwork{
+    padding: 20px;
+    border: 2px solid red;
+    margin: 4px;
+    margin-bottom:30px;
+}
+/* ======================================================HOLIDAYS========================================================================= */
+.table {
+    color: #000;
+    border: 1px solid #f0f0f0;
+}
+
+.table-striped > tbody > tr:nth-of-type(2n + 1) {
+    background-color: #f6f6f6;
+}
+
+.custom-table tr.holiday-completed {
+    color: #aaa;
+}
+
+.custom-table td .action-icon {
+    right: 0;
+}
+/* ======================================================SALARY========================================================================= */
+
+.status-grey, a.status-grey {
+    background-color: #ddd;
+    border: 1px solid #818181;
+    color: #818181;
+}
+
+.salary td .action-icon {
+    right: 37px;
+}
+/* ======================================================SALARY-VIEW========================================================================= */
+.card-box {
+    background-color: #fff;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.payslip-title {
+    margin-bottom: 20px;
+    text-align: center;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.payslip-right {
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-weight: bold;
+}
+.card-box ul li {
+    font-size: 14px;
+}
+
+.invoice-details {
+    padding-top: 14%;
+}
+
+.card-box p strong {
+    font-weight: bold;
+}
+/* ======================================================LOGIN========================================================================= */
+
+.card-signin {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-signin .card-title {
+        margin-bottom: 2rem;
+        font-weight: 300;
+        font-size: 1.5rem;
+}
+
+.card-signin .card-body {
+        padding: 2rem;
+}
+
+.form-signin {
+    width: 100%;
+}
+
+    .form-signin .btn {
+        font-size: 80%;
+        letter-spacing: .1rem;
+        font-weight: bold;
+        padding: 1rem;
+        transition: all 0.2s;
+    }

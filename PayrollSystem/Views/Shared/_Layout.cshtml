@@ -1,0 +1,272 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<Worker> _userManager
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Payroll System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+
+    <link href="~/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/css/sb-admin.css" rel="stylesheet">
+    <link href="~/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="~/css/index.css" rel="stylesheet" />
+</head>
+<body class="fixed-nav sticky-footer "  style="background-color:azure" id="page-top">
+    <!-- Navigation-->
+    <div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <h2 class="text-center" style=" color:white"></h2>
+                    <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+
+                            @{var data = await _userManager.FindByNameAsync(User.Identity.Name);
+                                <h5 class="nav-link">
+                                    <span class="account-text">@data.Account</span>
+                                </h5>
+                            }
+                        </li>
+                        @if (User.IsInRole(SD.Admin.ToString()))
+                        {
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Store">
+                                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#CompanyPages" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-file"></i>
+                                    <span class="nav-link-text">Şirkət</span>
+                                </a>
+                                <ul class="sidenav-second-level collapse" id="CompanyPages">
+
+                                    <li title="Şirkət əlavə et">
+                                        <a asp-controller="Company" asp-action="Create">Şirkət əlavə et</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Company" asp-action="List">Şirkət siyahısı</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Departament">
+                                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#DepartmentPages" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-file"></i>
+                                    <span class="nav-link-text">Departament</span>
+                                </a>
+                                <ul class="sidenav-second-level collapse" id="DepartmentPages">
+
+                                    <li title="Add empoyee">
+                                        <a asp-controller="Department" asp-action="Create">Departament əlavə et</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Department" asp-action="List">Departament siyahısı</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Mağaza">
+                                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#ShopPages" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-file"></i>
+                                    <span class="nav-link-text">Mağaza</span>
+                                </a>
+                                <ul class="sidenav-second-level collapse" id="ShopPages">
+
+                                    <li title="Add empoyee">
+                                        <a asp-controller="Shop" asp-action="Create">Mağaza əlavə et</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Shop" asp-action="List">Mağazalar siyahısı</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Position">
+                                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#PositionPages" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-file"></i>
+                                    <span class="nav-link-text">Vəzifə</span>
+                                </a>
+                                <ul class="sidenav-second-level collapse" id="PositionPages">
+
+                                    <li title="Vəzifə">
+                                        <a asp-controller="Position" asp-action="Create">Vəzifə əlavə et</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Position" asp-action="List">Vəzifələr</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Rollar">
+                                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#Role" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-file"></i>
+                                    <span class="nav-link-text">Rollar</span>
+                                </a>
+                                <ul class="sidenav-second-level collapse" id="Role">
+
+                                    <li title="İşçilərin rolu">
+                                        <a asp-controller="Worker" asp-action="List">İşçilər siyahısı</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Satış">
+                                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#Sale" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-file"></i>
+                                    <span class="nav-link-text">Satış</span>
+                                </a>
+                                <ul class="sidenav-second-level collapse" id="Sale">
+                                    <li title="Add sale">
+                                        <a asp-controller="Sale" asp-action="Create">Satış əlavə et</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+
+                        @if (User.IsInRole(SD.DepartmentHead.ToString()))
+                        {
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="İşçilər">
+                                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#HrWorkerPages" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-wrench"></i>
+                                    <span class="nav-link-text">İşçilər</span>
+                                </a>
+                                <ul class="sidenav-second-level collapse" id="HrWorkerPages">
+                                    <li>
+                                        <a asp-controller="Bonus" asp-action="List">İşçilərin siyahısı</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        @if (User.IsInRole(SD.HR.ToString()))
+                        {
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employees">
+                                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#HrEmployePages" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-file"></i>
+                                    <span class="nav-link-text">Namizədlər</span>
+                                </a>
+                                <ul class="sidenav-second-level collapse" id="HrEmployePages">
+
+                                    <li title="Add empoyee">
+                                        <a asp-controller="Employee" asp-action="Create">Namizəd əlavə et</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Employee" asp-action="List">Namizəd siyahısı</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Workers">
+                                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#HrWorkerPages" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-wrench"></i>
+                                    <span class="nav-link-text">İşçilər</span>
+                                </a>
+                                <ul class="sidenav-second-level collapse" id="HrWorkerPages">
+                                    <li>
+                                        <a asp-controller="Worker" asp-action="List">İşçilər siyahısı</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Worker" asp-action="Create">İşçi əlavə et</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Worker" asp-action="RemoveWork">Çıxarılan işçilər</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        @if (User.IsInRole(SD.PayrollSpecalist.ToString()))
+                        {
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Maaş">
+                                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#Salary" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-file"></i>
+                                    <span class="nav-link-text">işçilərin maaşları</span>
+                                </a>
+                                <ul class="sidenav-second-level collapse" id="Salary">
+                                    <li title="maaş">
+                                        <a asp-controller="Salary" asp-action="SalaryForWorker">Cari ay üçün maaşlar</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Bonus">
+                                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#Bonus" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-file"></i>
+                                    <span class="nav-link-text">Mağazalara görə bonus</span>
+                                </a>
+                                <ul class="sidenav-second-level collapse" id="Bonus">
+                                    <li title="maaş">
+                                        <a asp-controller="Shop" asp-action="List">Mağazaların siyahısı</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="changePassword">
+                            <a class="nav-link " data-target="#exampleModal" asp-controller="Account" asp-action="ChangePassword">
+                                Parolu dəyiş
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link " data-toggle="modal" data-target="#exampleModal">
+                                <i class="fa fa-fw fa-sign-out"></i>Çıxış
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="content-wrapper">
+                <div class="container-fluid" style="background-color:azure; height:515px;">
+                    <hr>
+                    <div class="row">
+                        @RenderBody()
+                    </div>
+                </div>
+                <footer class="sticky-footer">
+                    <div class="container">
+                        <div class="text-center">
+                            <small>Copyright © Payroll System 2019</small>
+                        </div>
+                    </div>
+                </footer>
+                <a class="scroll-to-top rounded" href="#page-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+                <!-- Logout Modal-->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">Çıxmaq istədiyinizdən əminsiniz?</div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Ləğv et</button>
+                                <a class="btn btn-primary" asp-controller="Account" asp-action="Logout">Çıxış</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div class="row">
+                @RenderBody()
+            </div>
+        }
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/dist/js/datepicker.min.js"></script>
+
+    <!-- Include English language -->
+    <script src="~/dist/js/i18n/datepicker.en.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
